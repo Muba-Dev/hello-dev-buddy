@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -18,6 +19,10 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				mono: ['JetBrains Mono', 'monospace'],
+				sans: ['Inter', 'sans-serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -61,6 +66,31 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Dev Buddy specific colors
+				devblue: {
+					50: '#f0f4ff',
+					100: '#dbe4ff',
+					200: '#bac8ff',
+					300: '#91a7ff',
+					400: '#748ffc',
+					500: '#5c6bc0',
+					600: '#4a51ac',
+					700: '#3f4293',
+					800: '#383b78',
+					900: '#2c2e53',
+				},
+				devpurple: {
+					50: '#f5f3ff',
+					100: '#ede9fe',
+					200: '#ddd6fe',
+					300: '#c4b5fd',
+					400: '#a78bfa',
+					500: '#8b5cf6',
+					600: '#7c3aed',
+					700: '#6d28d9',
+					800: '#5b21b6',
+					900: '#4c1d95',
 				}
 			},
 			borderRadius: {
@@ -84,11 +114,16 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'code-glow': {
+					'0%, 100%': { boxShadow: '0 0 3px rgba(139, 92, 246, 0.3)' },
+					'50%': { boxShadow: '0 0 10px rgba(139, 92, 246, 0.6)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'code-glow': 'code-glow 2s ease-in-out infinite'
 			}
 		}
 	},
