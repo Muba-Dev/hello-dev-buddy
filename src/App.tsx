@@ -11,20 +11,35 @@ import SessionsPage from "./pages/Sessions";
 import FeesPage from "./pages/Fees";
 import EnrollmentPage from "./pages/Enrollment";
 
+/**
+ * Main application component
+ * 
+ * Sets up:
+ * 1. React Query for data fetching
+ * 2. UI providers (Tooltip, Toast notifications)
+ * 3. React Router for navigation between pages
+ * 
+ * The routing structure defines all available pages in the application.
+ */
+
+// Create React Query client for handling API requests and caching
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
+      {/* Toast notification systems */}
       <Toaster />
       <Sonner />
       <BrowserRouter>
         <Routes>
+          {/* Main application routes */}
           <Route path="/" element={<Index />} />
           <Route path="/courses" element={<CoursesPage />} />
           <Route path="/sessions" element={<SessionsPage />} />
           <Route path="/fees" element={<FeesPage />} />
           <Route path="/enrollment" element={<EnrollmentPage />} />
+          {/* 404 page for handling unknown routes */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

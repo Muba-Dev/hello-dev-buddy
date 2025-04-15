@@ -28,7 +28,21 @@ import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 
-// Define the enrollment form schema
+/**
+ * Enrollment Page
+ * 
+ * Provides a comprehensive enrollment form for students wanting to join the Islamic center.
+ * The form includes:
+ * - Personal information collection
+ * - Program selection
+ * - Previous education details
+ * - Emergency contact information
+ * - Terms and conditions acceptance
+ * 
+ * Uses React Hook Form with Zod validation for form handling.
+ */
+
+// Define the enrollment form schema with validation rules
 const formSchema = z.object({
   fullName: z.string().min(3, {
     message: "Name must be at least 3 characters.",
@@ -61,6 +75,7 @@ const formSchema = z.object({
 });
 
 const EnrollmentPage = () => {
+  // Initialize form with React Hook Form and Zod validation
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -77,6 +92,7 @@ const EnrollmentPage = () => {
     },
   });
 
+  // Handle form submission
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
     toast({
@@ -106,6 +122,7 @@ const EnrollmentPage = () => {
           <CardContent>
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                {/* Personal Information Section */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <FormField
                     control={form.control}
@@ -212,6 +229,7 @@ const EnrollmentPage = () => {
                   />
                 </div>
 
+                {/* Address Section */}
                 <FormField
                   control={form.control}
                   name="address"
@@ -226,6 +244,7 @@ const EnrollmentPage = () => {
                   )}
                 />
 
+                {/* Previous Education Section */}
                 <FormField
                   control={form.control}
                   name="previousEducation"
@@ -241,6 +260,7 @@ const EnrollmentPage = () => {
                   )}
                 />
 
+                {/* Emergency Contact Section */}
                 <FormField
                   control={form.control}
                   name="emergencyContact"
@@ -255,6 +275,7 @@ const EnrollmentPage = () => {
                   )}
                 />
 
+                {/* Terms and Conditions Section */}
                 <FormField
                   control={form.control}
                   name="termsAccepted"
@@ -263,7 +284,7 @@ const EnrollmentPage = () => {
                       <FormControl>
                         <Checkbox
                           checked={field.value}
-                          onCheckedChange={field.onChange}
+                          onCheckedChange={(checked) => field.onChange(checked === true)}
                         />
                       </FormControl>
                       <div className="space-y-1 leading-none">

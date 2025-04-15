@@ -4,12 +4,19 @@ import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { BookOpen, Home, School, CalendarDays, FileText } from "lucide-react";
 
+/**
+ * Header Component
+ * 
+ * Provides the main navigation bar for the application with links to all major sections.
+ * Uses React Router for navigation and highlights the active route.
+ */
 const Header: React.FC = () => {
   const location = useLocation();
   
   return (
     <header className="bg-emerald-800 text-white py-4 sticky top-0 z-10 backdrop-blur-sm bg-opacity-90">
       <div className="container flex items-center justify-between">
+        {/* Logo and Site Title */}
         <div className="flex items-center gap-2">
           <Link to="/" className="flex items-center gap-2">
             <div className="size-12 bg-emerald-600 text-white rounded-full flex items-center justify-center shadow-md hover:scale-105 transition-transform">
@@ -19,6 +26,7 @@ const Header: React.FC = () => {
           </Link>
         </div>
         
+        {/* Navigation Links */}
         <nav>
           <ul className="flex items-center gap-4">
             <li>
