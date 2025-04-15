@@ -1,150 +1,130 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import MainLayout from '@/layouts/MainLayout';
-import CodeSnippet from '@/components/CodeSnippet';
-import DocReference from '@/components/DocReference';
-import TaskTracker from '@/components/TaskTracker';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Code, BookOpen, ListTodo } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { BookOpen, CalendarDays, Users, FileText } from "lucide-react";
 
 const Index = () => {
-  const reactHookCode = `import { useState, useEffect } from 'react';
-
-function Counter() {
-  const [count, setCount] = useState(0);
-  
-  useEffect(() => {
-    document.title = \`You clicked \${count} times\`;
-  }, [count]);
-  
-  return (
-    <div>
-      <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>
-        Click me
-      </button>
-    </div>
-  );
-}`;
-
-  const tailwindCode = `const Button = ({ children, variant = 'primary' }) => {
-  const baseClasses = 'px-4 py-2 rounded font-medium transition';
-  
-  const variants = {
-    primary: 'bg-blue-500 hover:bg-blue-600 text-white',
-    secondary: 'bg-gray-200 hover:bg-gray-300 text-gray-800',
-    danger: 'bg-red-500 hover:bg-red-600 text-white',
-  };
-  
-  return (
-    <button className={\`\${baseClasses} \${variants[variant]}\`}>
-      {children}
-    </button>
-  );
-};`;
-
   return (
     <MainLayout>
-      <div className="max-w-5xl mx-auto">
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-devblue-600 to-devpurple-500 bg-clip-text text-transparent">
-            Welcome to Dev Buddy
-          </h1>
-          <p className="text-xl text-muted-foreground">
-            Your ultimate companion for development tasks and references
-          </p>
-        </div>
+      <div className="max-w-6xl mx-auto">
+        {/* Hero Section */}
+        <section className="mb-16 text-center relative py-16 px-4 rounded-xl bg-gradient-to-r from-emerald-700 to-emerald-900 text-white">
+          <div className="max-w-3xl mx-auto">
+            <h1 className="text-4xl font-bold mb-6">
+              Darul-Hudal Wal-Furquran Islamic Center
+            </h1>
+            <p className="text-xl mb-8">
+              Follow the path of our beloved Prophet Muhammad (SAW) through comprehensive 
+              Islamic education focused on Quran, Hadith, Fiqh, and Islamic values.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Button size="lg" className="bg-white text-emerald-800 hover:bg-emerald-100" asChild>
+                <Link to="/courses">
+                  Explore Courses
+                </Link>
+              </Button>
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-emerald-800" asChild>
+                <Link to="/enrollment">
+                  Enroll Now
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </section>
 
-        <Tabs defaultValue="snippets" className="mb-12">
-          <TabsList className="mb-6">
-            <TabsTrigger value="snippets" className="flex items-center gap-2">
-              <Code size={16} />
-              <span>Code Snippets</span>
-            </TabsTrigger>
-            <TabsTrigger value="docs" className="flex items-center gap-2">
-              <BookOpen size={16} />
-              <span>Documentation</span>
-            </TabsTrigger>
-            <TabsTrigger value="tasks" className="flex items-center gap-2">
-              <ListTodo size={16} />
-              <span>Task Tracker</span>
-            </TabsTrigger>
-          </TabsList>
-          
-          <TabsContent value="snippets" className="space-y-6">
-            <h2 className="text-2xl font-semibold mb-4">Useful Code Snippets</h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              <CodeSnippet 
-                title="React Hooks Example" 
-                language="jsx" 
-                code={reactHookCode} 
-                className="animate-code-glow"
-              />
-              <CodeSnippet 
-                title="Tailwind Component" 
-                language="jsx" 
-                code={tailwindCode} 
-              />
-            </div>
-          </TabsContent>
-          
-          <TabsContent value="docs" className="space-y-6">
-            <h2 className="text-2xl font-semibold mb-4">Documentation References</h2>
-            <div className="grid md:grid-cols-3 gap-6">
-              <DocReference
-                title="React Documentation"
-                description="Official React documentation with guides, API references, and examples."
-                tags={["React", "JavaScript", "Frontend"]}
-                url="https://reactjs.org/docs/getting-started.html"
-              />
-              <DocReference
-                title="TypeScript Handbook"
-                description="The TypeScript Handbook is a comprehensive guide to the TypeScript language."
-                tags={["TypeScript", "JavaScript", "Static Types"]}
-                url="https://www.typescriptlang.org/docs/"
-              />
-              <DocReference
-                title="Tailwind CSS"
-                description="Rapidly build modern websites without ever leaving your HTML."
-                tags={["CSS", "Utility-First", "Styling"]}
-                url="https://tailwindcss.com/docs"
-              />
-              <DocReference
-                title="Node.js Documentation"
-                description="Official documentation for Node.js, a JavaScript runtime."
-                tags={["Node.js", "JavaScript", "Backend"]}
-                url="https://nodejs.org/en/docs/"
-              />
-              <DocReference
-                title="Next.js Documentation"
-                description="The React framework for production with hybrid static & server rendering."
-                tags={["Next.js", "React", "Framework"]}
-                url="https://nextjs.org/docs"
-              />
-              <DocReference
-                title="Git Documentation"
-                description="Documentation for Git, the distributed version control system."
-                tags={["Git", "Version Control", "DevOps"]}
-                url="https://git-scm.com/doc"
-              />
-            </div>
-          </TabsContent>
-          
-          <TabsContent value="tasks">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <ListTodo size={18} />
-                  <span>Development Tasks</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <TaskTracker />
+        {/* Features Section */}
+        <section className="mb-16">
+          <h2 className="text-3xl font-bold mb-8 text-center text-emerald-800">Our Programs</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <Card className="text-center hover:shadow-lg transition-shadow">
+              <CardContent className="pt-6">
+                <div className="mb-4 mx-auto w-16 h-16 bg-emerald-100 text-emerald-800 rounded-full flex items-center justify-center">
+                  <BookOpen size={30} />
+                </div>
+                <h3 className="text-xl font-medium mb-2">Quran Studies</h3>
+                <p className="text-muted-foreground">
+                  Learn Quran recitation with proper Tajweed and memorization classes.
+                </p>
               </CardContent>
             </Card>
-          </TabsContent>
-        </Tabs>
+            
+            <Card className="text-center hover:shadow-lg transition-shadow">
+              <CardContent className="pt-6">
+                <div className="mb-4 mx-auto w-16 h-16 bg-emerald-100 text-emerald-800 rounded-full flex items-center justify-center">
+                  <Users size={30} />
+                </div>
+                <h3 className="text-xl font-medium mb-2">Islamic Law (Fiqh)</h3>
+                <p className="text-muted-foreground">
+                  Study Islamic jurisprudence and the legal framework of Islam.
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card className="text-center hover:shadow-lg transition-shadow">
+              <CardContent className="pt-6">
+                <div className="mb-4 mx-auto w-16 h-16 bg-emerald-100 text-emerald-800 rounded-full flex items-center justify-center">
+                  <CalendarDays size={30} />
+                </div>
+                <h3 className="text-xl font-medium mb-2">Hadith Sciences</h3>
+                <p className="text-muted-foreground">
+                  Learn the traditions and sayings of Prophet Muhammad (SAW).
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card className="text-center hover:shadow-lg transition-shadow">
+              <CardContent className="pt-6">
+                <div className="mb-4 mx-auto w-16 h-16 bg-emerald-100 text-emerald-800 rounded-full flex items-center justify-center">
+                  <FileText size={30} />
+                </div>
+                <h3 className="text-xl font-medium mb-2">Arabic Language</h3>
+                <p className="text-muted-foreground">
+                  Master the language of the Quran to understand its deeper meanings.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
+        {/* About Section */}
+        <section className="mb-16">
+          <div className="bg-emerald-50 rounded-xl p-8">
+            <div className="flex flex-col md:flex-row gap-8 items-center">
+              <div className="w-full md:w-1/2">
+                <h2 className="text-3xl font-bold mb-4 text-emerald-800">About Our Center</h2>
+                <p className="mb-4">
+                  Darul-Hudal Wal-Furquran is dedicated to providing quality Islamic education 
+                  that nurtures both spiritual growth and academic excellence.
+                </p>
+                <p className="mb-6">
+                  Our mission is to guide students on the path of Prophet Muhammad (SAW) 
+                  by teaching authentic Islamic knowledge with modern educational methods.
+                </p>
+                <Button variant="outline" className="border-emerald-800 text-emerald-800 hover:bg-emerald-800 hover:text-white" asChild>
+                  <Link to="/courses">Learn More</Link>
+                </Button>
+              </div>
+              <div className="w-full md:w-1/2 bg-emerald-200 h-64 rounded-lg flex items-center justify-center">
+                <span className="text-emerald-800 font-medium">Islamic Center Image</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Call to Action */}
+        <section className="mb-16 text-center bg-emerald-800 text-white p-10 rounded-xl">
+          <h2 className="text-3xl font-bold mb-4">Join Our Islamic Community</h2>
+          <p className="max-w-2xl mx-auto mb-6">
+            Enroll today to embark on a journey of Islamic knowledge and spiritual growth.
+            Our doors are open to all who seek to learn and grow in their faith.
+          </p>
+          <Button size="lg" className="bg-white text-emerald-800 hover:bg-emerald-100" asChild>
+            <Link to="/enrollment">Enroll Now</Link>
+          </Button>
+        </section>
       </div>
     </MainLayout>
   );
