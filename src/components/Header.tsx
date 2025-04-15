@@ -12,8 +12,8 @@ const Header: React.FC = () => {
       <div className="container flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Link to="/" className="flex items-center gap-2">
-            <div className="size-10 bg-emerald-600 text-white rounded-md flex items-center justify-center">
-              <BookOpen size={20} />
+            <div className="size-12 bg-emerald-600 text-white rounded-full flex items-center justify-center shadow-md hover:scale-105 transition-transform">
+              <BookOpen size={24} className="text-white" strokeWidth={1.5} />
             </div>
             <h1 className="text-xl font-semibold">Darul-Hudal Wal-Furquran</h1>
           </Link>
