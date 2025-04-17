@@ -1,4 +1,3 @@
-
 import React from 'react';
 import MainLayout from '@/layouts/MainLayout';
 import { useForm } from "react-hook-form";
@@ -69,7 +68,7 @@ const formSchema = z.object({
   emergencyContact: z.string().min(10, {
     message: "Please provide an emergency contact number.",
   }),
-  termsAccepted: z.literal(true, {
+  termsAccepted: z.string().refine((val) => val === "true", {
     errorMap: () => ({ message: "You must accept the terms and conditions." }),
   }),
 });
