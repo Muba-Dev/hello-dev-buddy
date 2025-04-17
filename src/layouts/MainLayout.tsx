@@ -13,7 +13,7 @@ import Banner from '@/components/Banner';
  * - Main content area with proper spacing
  * - Footer at the bottom
  * 
- * This layout ensures consistent UI across all pages.
+ * This layout ensures consistent UI across all pages and devices.
  */
 interface MainLayoutProps {
   children: React.ReactNode;
@@ -24,7 +24,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
     <div className="min-h-screen flex flex-col">
       <Banner />
       <Header />
-      <main className="flex-1 container py-8">
+      <main className="flex-1 container py-4 md:py-8 px-4 md:px-8">
         {children}
       </main>
       <Footer />
