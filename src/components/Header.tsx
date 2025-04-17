@@ -1,8 +1,8 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { BookOpen, Home, School, CalendarDays, FileText, Menu, X } from "lucide-react";
+import { BookOpen, Home, School, CalendarDays, FileText, Menu } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 /**
@@ -14,7 +14,6 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
  */
 const Header: React.FC = () => {
   const location = useLocation();
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
   const navigationLinks = [
     {
@@ -48,12 +47,19 @@ const Header: React.FC = () => {
     <header className="bg-emerald-800 text-white py-4 sticky top-0 z-10 backdrop-blur-sm bg-opacity-90">
       <div className="container flex items-center justify-between">
         {/* Logo and Site Title */}
-        <div className="flex items-center gap-2">
-          <Link to="/" className="flex items-center gap-2">
-            <div className="size-12 bg-emerald-600 text-white rounded-full flex items-center justify-center shadow-md hover:scale-105 transition-transform">
-              <BookOpen size={24} className="text-white" strokeWidth={1.5} />
+        <div className="flex items-center gap-3">
+          <Link to="/" className="flex items-center gap-3">
+            <div className="w-16 h-16 rounded-full overflow-hidden flex items-center justify-center bg-white">
+              <img 
+                src="/lovable-uploads/8d885954-735f-4a6c-b8ad-3f47dd5cccd8.png" 
+                alt="Darul-Huda-Walfurquran Logo" 
+                className="w-full h-full object-contain"
+              />
             </div>
-            <h1 className="text-xl font-semibold hidden sm:block">Darul-Hudal Wal-Furquran</h1>
+            <div className="hidden sm:flex flex-col">
+              <h1 className="text-xl font-semibold">Darul-Hudal Wal-Furquran</h1>
+              <p className="text-xs text-emerald-200">School of Arabic and Islamic Studies</p>
+            </div>
           </Link>
         </div>
         
@@ -88,7 +94,16 @@ const Header: React.FC = () => {
             <SheetContent side="right" className="bg-emerald-800 text-white p-0">
               <div className="flex flex-col h-full">
                 <div className="p-4 flex justify-between items-center border-b border-emerald-700">
-                  <h2 className="font-semibold text-lg">Menu</h2>
+                  <div className="flex items-center gap-2">
+                    <div className="w-10 h-10 rounded-full overflow-hidden flex items-center justify-center bg-white">
+                      <img 
+                        src="/lovable-uploads/8d885954-735f-4a6c-b8ad-3f47dd5cccd8.png" 
+                        alt="Darul-Huda-Walfurquran Logo" 
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+                    <h2 className="font-semibold text-lg">Menu</h2>
+                  </div>
                 </div>
                 <nav className="flex-1 p-4">
                   <ul className="grid gap-3">
