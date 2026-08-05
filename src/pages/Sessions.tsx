@@ -99,7 +99,7 @@ const SessionsPage = () => {
         <div className="space-y-12">
           <section>
             <h2 className="text-2xl font-semibold mb-6 flex items-center gap-2">
-              <CalendarDays className="text-emerald-700" />
+              <CalendarDays className="text-accent" />
               <span>Regular Sessions (Weekdays)</span>
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -111,7 +111,7 @@ const SessionsPage = () => {
 
           <section>
             <h2 className="text-2xl font-semibold mb-6 flex items-center gap-2">
-              <CalendarDays className="text-emerald-700" />
+              <CalendarDays className="text-accent" />
               <span>Weekly Special Sessions</span>
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -123,7 +123,7 @@ const SessionsPage = () => {
 
           <section>
             <h2 className="text-2xl font-semibold mb-6 flex items-center gap-2">
-              <CalendarDays className="text-emerald-700" />
+              <CalendarDays className="text-accent" />
               <span>Weekend Sessions</span>
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -152,26 +152,26 @@ interface SessionProps {
 
 const SessionCard: React.FC<SessionProps> = ({ session }) => {
   return (
-    <Card className="border-l-4 border-l-emerald-600">
+    <Card className="border-l-4 border-l-accent">
       <CardHeader className="pb-2">
         <CardTitle className="text-xl">{session.title}</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="space-y-3">
           <div className="flex items-center gap-2">
-            <CalendarDays size={18} className="text-emerald-700" />
+            <CalendarDays size={18} className="text-accent" />
             <span>{session.days}</span>
           </div>
           <div className="flex items-center gap-2">
-            <Clock size={18} className="text-emerald-700" />
+            <Clock size={18} className="text-accent" />
             <span>{session.time}</span>
           </div>
           <div className="flex items-center gap-2">
-            <MapPin size={18} className="text-emerald-700" />
+            <MapPin size={18} className="text-accent" />
             <span>{session.location}</span>
           </div>
           <div className="pt-2">
-            <Badge className="bg-emerald-100 text-emerald-800 hover:bg-emerald-200">
+            <Badge className="bg-secondary text-primary hover:bg-emerald-200">
               {session.teacher}
             </Badge>
           </div>

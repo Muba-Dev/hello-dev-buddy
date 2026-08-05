@@ -300,7 +300,7 @@ const EnrollmentPage = () => {
                   )}
                 />
 
-                <Button type="submit" className="w-full bg-emerald-700 hover:bg-emerald-800">
+                <Button type="submit" className="w-full bg-primary hover:bg-accent hover:text-accent-foreground">
                   Submit Enrollment
                 </Button>
               </form>
