@@ -88,7 +88,7 @@ const Index = () => {
               <Link
                 key={program.title}
                 to="/courses"
-                className={`index-row ${i === programs.length - 1 ? 'border-b-0' : ''}`}
+                className={`group index-row ${i === programs.length - 1 ? 'border-b-0' : ''}`}
               >
                 <span className="font-display text-xl italic text-accent mb-2 block">
                   {program.number}

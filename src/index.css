@@ -118,7 +118,7 @@
   }
 
   .index-row {
-    @apply group block p-8 border-b border-border transition-colors hover:bg-secondary;
+    @apply block p-8 border-b border-border transition-colors hover:bg-secondary;
   }
 
   .rise-in {
