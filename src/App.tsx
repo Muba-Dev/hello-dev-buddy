@@ -10,6 +10,8 @@ import CoursesPage from "./pages/Courses";
 import SessionsPage from "./pages/Sessions";
 import FeesPage from "./pages/Fees";
 import EnrollmentPage from "./pages/Enrollment";
+import Login from "./pages/Login";
+import OAuthConsent from "./pages/OAuthConsent";
 
 /**
  * Main application component
@@ -39,6 +41,8 @@ const App = () => (
           <Route path="/sessions" element={<SessionsPage />} />
           <Route path="/fees" element={<FeesPage />} />
           <Route path="/enrollment" element={<EnrollmentPage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/.lovable/oauth/consent" element={<OAuthConsent />} />
           {/* 404 page for handling unknown routes */}
           <Route path="*" element={<NotFound />} />
         </Routes>

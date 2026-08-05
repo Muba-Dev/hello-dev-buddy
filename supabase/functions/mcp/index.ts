@@ -3,7 +3,7 @@
 // supabase function: mcp
 // Bundled from src/lib/mcp/index.ts by @lovable.dev/mcp-js.
 // src/lib/mcp/index.ts
-import { defineMcp } from "npm:@lovable.dev/mcp-js@0.26.1";
+import { auth, defineMcp } from "npm:@lovable.dev/mcp-js@0.26.1";
 
 // src/lib/mcp/tools/list-courses.ts
 import { defineTool } from "npm:@lovable.dev/mcp-js@0.26.1";
@@ -141,11 +141,16 @@ var get_enrollment_info_default = defineTool4({
 });
 
 // src/lib/mcp/index.ts
+var projectRef = "isfmtwbrsscbodhplhbq";
 var mcp_default = defineMcp({
   name: "hello-dev-buddy",
   title: "hello-dev-buddy",
   version: "0.1.0",
   instructions: "Public information tools for Darul-Hudal Wal-Furquran, an Islamic school and learning center. Use `list_courses` for programs, `list_sessions` for class schedules, `get_fees` for fees and payment plans, and `get_enrollment_info` for how to apply.",
+  auth: auth.oauth.issuer({
+    issuer: `https://${projectRef}.supabase.co/auth/v1`,
+    acceptedAudiences: "authenticated"
+  }),
   tools: [list_courses_default, list_sessions_default, get_fees_default, get_enrollment_info_default]
 });
 
