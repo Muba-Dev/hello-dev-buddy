@@ -1,130 +1,106 @@
-
 import React from 'react';
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { BookOpen, Home, School, CalendarDays, FileText, Menu } from "lucide-react";
+import { Menu } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 /**
  * Header Component
- * 
- * Provides the main navigation bar for the application with links to all major sections.
- * Uses React Router for navigation and highlights the active route.
- * Implements responsive design for mobile and desktop screens.
+ *
+ * Magazine masthead: title block, centered rule-divided nav, session dateline.
  */
+const navigationLinks = [
+  { path: "/", label: "Home" },
+  { path: "/courses", label: "Courses" },
+  { path: "/sessions", label: "Sessions" },
+  { path: "/fees", label: "School Fees" },
+  { path: "/enrollment", label: "Enrollment" },
+];
+
 const Header: React.FC = () => {
   const location = useLocation();
-  
-  const navigationLinks = [
-    {
-      path: "/",
-      label: "Home",
-      icon: <Home size={16} />
-    },
-    {
-      path: "/courses",
-      label: "Courses",
-      icon: <BookOpen size={16} />
-    },
-    {
-      path: "/sessions",
-      label: "Sessions",
-      icon: <CalendarDays size={16} />
-    },
-    {
-      path: "/fees",
-      label: "School Fees",
-      icon: <School size={16} />
-    },
-    {
-      path: "/enrollment",
-      label: "Enrollment",
-      icon: <FileText size={16} />
-    }
-  ];
 
   return (
-    <header className="bg-emerald-800 text-white py-4 sticky top-0 z-10 backdrop-blur-sm bg-opacity-90">
-      <div className="container flex items-center justify-between">
-        {/* Logo and Site Title */}
-        <div className="flex items-center gap-3">
+    <header className="border-b border-border bg-background sticky top-0 z-20">
+      <div className="grid grid-cols-1 md:grid-cols-12">
+        {/* Title block */}
+        <div className="md:col-span-3 md:border-r border-border p-5 flex items-center justify-between md:justify-start gap-3">
           <Link to="/" className="flex items-center gap-3">
-            <div className="w-16 h-16 rounded-full overflow-hidden flex items-center justify-center bg-white">
-              <img 
-                src="/lovable-uploads/8d885954-735f-4a6c-b8ad-3f47dd5cccd8.png" 
-                alt="Darul-Huda-Walfurquran Logo" 
+            <div className="w-11 h-11 rounded-full overflow-hidden bg-secondary flex items-center justify-center shrink-0">
+              <img
+                src="/lovable-uploads/8d885954-735f-4a6c-b8ad-3f47dd5cccd8.png"
+                alt="Darul-Hudal Wal-Furquran crest"
                 className="w-full h-full object-contain"
               />
             </div>
-            <div className="hidden sm:flex flex-col">
-              <h1 className="text-xl font-semibold">Darul-Hudal Wal-Furquran</h1>
-              <p className="text-xs text-emerald-200">School of Arabic and Islamic Studies</p>
-            </div>
+            <span className="font-display text-2xl leading-[0.95]">
+              Darul-Hudal
+              <br />
+              Wal-Furquran
+            </span>
           </Link>
-        </div>
-        
-        {/* Desktop Navigation */}
-        <nav className="hidden md:block">
-          <ul className="flex items-center gap-4">
-            {navigationLinks.map((link) => (
-              <li key={link.path}>
-                <Button 
-                  variant="ghost" 
-                  className={`flex items-center gap-2 text-white hover:bg-emerald-700 ${location.pathname === link.path ? 'bg-emerald-700' : ''}`} 
-                  asChild
-                >
-                  <Link to={link.path}>
-                    {link.icon}
-                    <span>{link.label}</span>
-                  </Link>
+
+          {/* Mobile menu */}
+          <div className="md:hidden">
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon" aria-label="Open menu">
+                  <Menu size={22} />
                 </Button>
-              </li>
-            ))}
-          </ul>
-        </nav>
-        
-        {/* Mobile Navigation */}
-        <div className="md:hidden">
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="text-white">
-                <Menu size={24} />
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right" className="bg-emerald-800 text-white p-0">
-              <div className="flex flex-col h-full">
-                <div className="p-4 flex justify-between items-center border-b border-emerald-700">
-                  <div className="flex items-center gap-2">
-                    <div className="w-10 h-10 rounded-full overflow-hidden flex items-center justify-center bg-white">
-                      <img 
-                        src="/lovable-uploads/8d885954-735f-4a6c-b8ad-3f47dd5cccd8.png" 
-                        alt="Darul-Huda-Walfurquran Logo" 
-                        className="w-full h-full object-contain"
-                      />
-                    </div>
-                    <h2 className="font-semibold text-lg">Menu</h2>
-                  </div>
+              </SheetTrigger>
+              <SheetContent side="right" className="bg-background p-0 border-l border-border">
+                <div className="p-6 border-b border-border">
+                  <p className="eyebrow">Contents</p>
                 </div>
-                <nav className="flex-1 p-4">
-                  <ul className="grid gap-3">
+                <nav className="p-2">
+                  <ul>
                     {navigationLinks.map((link) => (
                       <li key={link.path}>
-                        <Link 
-                          to={link.path} 
-                          className={`flex items-center gap-3 py-3 px-4 rounded-md ${
-                            location.pathname === link.path ? 'bg-emerald-700' : 'hover:bg-emerald-700/50'
+                        <Link
+                          to={link.path}
+                          className={`block px-4 py-4 text-sm uppercase tracking-widest border-b border-border ${
+                            location.pathname === link.path ? 'bg-secondary font-semibold' : ''
                           }`}
                         >
-                          {link.icon}
-                          <span>{link.label}</span>
+                          {link.label}
                         </Link>
                       </li>
                     ))}
                   </ul>
                 </nav>
-              </div>
-            </SheetContent>
-          </Sheet>
+              </SheetContent>
+            </Sheet>
+          </div>
+        </div>
+
+        {/* Desktop nav */}
+        <nav className="hidden md:flex md:col-span-6 md:border-r border-border p-5 items-center justify-center">
+          <ul className="flex flex-wrap gap-x-8 gap-y-2 text-[11px] uppercase tracking-widest font-medium">
+            {navigationLinks.map((link) => {
+              const active = location.pathname === link.path;
+              const enroll = link.path === '/enrollment';
+              return (
+                <li key={link.path}>
+                  <Link
+                    to={link.path}
+                    className={
+                      enroll
+                        ? 'px-3 py-1 bg-primary text-primary-foreground hover:bg-accent hover:text-accent-foreground transition-colors'
+                        : `transition-colors hover:text-accent ${active ? 'underline underline-offset-8 decoration-accent' : ''}`
+                    }
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+
+        {/* Dateline */}
+        <div className="hidden md:flex md:col-span-3 p-5 flex-col justify-center text-right">
+          <span className="eyebrow">Current Session</span>
+          <span className="font-display text-xl italic">{new Date().getFullYear()} / {new Date().getFullYear() + 1}</span>
         </div>
       </div>
     </header>
