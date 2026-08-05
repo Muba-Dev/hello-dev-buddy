@@ -171,7 +171,7 @@ const SessionCard: React.FC<SessionProps> = ({ session }) => {
             <span>{session.location}</span>
           </div>
           <div className="pt-2">
-            <Badge className="bg-secondary text-primary hover:bg-emerald-200">
+            <Badge className="bg-secondary text-primary hover:bg-accent/40">
               {session.teacher}
             </Badge>
           </div>
