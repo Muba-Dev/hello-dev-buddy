@@ -1,131 +1,217 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import MainLayout from '@/layouts/MainLayout';
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { BookOpen, CalendarDays, Users, FileText } from "lucide-react";
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { ArrowRight, Check } from 'lucide-react';
+import campus from '@/assets/campus.jpg';
+import quranStudy from '@/assets/quran-study.jpg';
+import {
+  SCHOOL_NAME,
+  FOUNDED_YEAR,
+  facts,
+  programs,
+  testimonials,
+  recognitions,
+  enrollmentSteps,
+} from '@/data/school';
 
 const Index = () => {
   return (
     <MainLayout>
-      <div className="max-w-6xl mx-auto">
-        {/* Hero Section */}
-        <section className="mb-16 text-center relative py-16 px-4 rounded-xl bg-gradient-to-r from-emerald-700 to-emerald-900 text-white">
-          <div className="max-w-3xl mx-auto">
-            <h1 className="text-4xl font-bold mb-6">
-              Darul-Hudal Wal-Furquran Islamic Center
+      {/* Hero */}
+      <section className="relative">
+        <img
+          src={campus}
+          alt="Sandstone courtyard of the school with arched colonnade and carved screens"
+          className="absolute inset-0 w-full h-full object-cover"
+          width={1408}
+          height={912}
+        />
+        <div className="absolute inset-0 bg-foreground/65" aria-hidden="true" />
+        <div className="container relative py-24 md:py-32">
+          <div className="max-w-2xl text-background">
+            <p className="eyebrow text-background/70 mb-4">Osogbo, Osun State · Since {FOUNDED_YEAR}</p>
+            <h1 className="text-4xl md:text-6xl leading-[1.05] mb-6">
+              Learn the Qur'an and Arabic with teachers who know your name
             </h1>
-            <p className="text-xl mb-8">
-              Follow the path of our beloved Prophet Muhammad (SAW) through comprehensive 
-              Islamic education focused on Quran, Hadith, Fiqh, and Islamic values.
+            <p className="text-lg text-background/85 mb-8 max-w-xl">
+              Structured Hifz, Arabic and Islamic studies programmes for children, teens and
+              adults — small classes, fixed timetables, and fees you can plan for.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Button size="lg" className="bg-white text-emerald-800 hover:bg-emerald-100" asChild>
-                <Link to="/courses">
-                  Explore Courses
-                </Link>
+            <div className="flex flex-wrap gap-3">
+              <Button size="lg" asChild>
+                <Link to="/admission">Start your application</Link>
               </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-emerald-800" asChild>
-                <Link to="/enrollment">
-                  Enroll Now
-                </Link>
+              <Button
+                size="lg"
+                variant="outline"
+                className="bg-transparent text-background border-background/60 hover:bg-background hover:text-foreground"
+                asChild
+              >
+                <Link to="/programs">See programmes &amp; fees</Link>
               </Button>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Features Section */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8 text-center text-emerald-800">Our Programs</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Card className="text-center hover:shadow-lg transition-shadow">
-              <CardContent className="pt-6">
-                <div className="mb-4 mx-auto w-16 h-16 bg-emerald-100 text-emerald-800 rounded-full flex items-center justify-center">
-                  <BookOpen size={30} />
-                </div>
-                <h3 className="text-xl font-medium mb-2">Quran Studies</h3>
-                <p className="text-muted-foreground">
-                  Learn Quran recitation with proper Tajweed and memorization classes.
-                </p>
-              </CardContent>
-            </Card>
-            
-            <Card className="text-center hover:shadow-lg transition-shadow">
-              <CardContent className="pt-6">
-                <div className="mb-4 mx-auto w-16 h-16 bg-emerald-100 text-emerald-800 rounded-full flex items-center justify-center">
-                  <Users size={30} />
-                </div>
-                <h3 className="text-xl font-medium mb-2">Islamic Law (Fiqh)</h3>
-                <p className="text-muted-foreground">
-                  Study Islamic jurisprudence and the legal framework of Islam.
-                </p>
-              </CardContent>
-            </Card>
-            
-            <Card className="text-center hover:shadow-lg transition-shadow">
-              <CardContent className="pt-6">
-                <div className="mb-4 mx-auto w-16 h-16 bg-emerald-100 text-emerald-800 rounded-full flex items-center justify-center">
-                  <CalendarDays size={30} />
-                </div>
-                <h3 className="text-xl font-medium mb-2">Hadith Sciences</h3>
-                <p className="text-muted-foreground">
-                  Learn the traditions and sayings of Prophet Muhammad (SAW).
-                </p>
-              </CardContent>
-            </Card>
-            
-            <Card className="text-center hover:shadow-lg transition-shadow">
-              <CardContent className="pt-6">
-                <div className="mb-4 mx-auto w-16 h-16 bg-emerald-100 text-emerald-800 rounded-full flex items-center justify-center">
-                  <FileText size={30} />
-                </div>
-                <h3 className="text-xl font-medium mb-2">Arabic Language</h3>
-                <p className="text-muted-foreground">
-                  Master the language of the Quran to understand its deeper meanings.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </section>
-
-        {/* About Section */}
-        <section className="mb-16">
-          <div className="bg-emerald-50 rounded-xl p-8">
-            <div className="flex flex-col md:flex-row gap-8 items-center">
-              <div className="w-full md:w-1/2">
-                <h2 className="text-3xl font-bold mb-4 text-emerald-800">About Our Center</h2>
-                <p className="mb-4">
-                  Darul-Hudal Wal-Furquran is dedicated to providing quality Islamic education 
-                  that nurtures both spiritual growth and academic excellence.
-                </p>
-                <p className="mb-6">
-                  Our mission is to guide students on the path of Prophet Muhammad (SAW) 
-                  by teaching authentic Islamic knowledge with modern educational methods.
-                </p>
-                <Button variant="outline" className="border-emerald-800 text-emerald-800 hover:bg-emerald-800 hover:text-white" asChild>
-                  <Link to="/courses">Learn More</Link>
-                </Button>
-              </div>
-              <div className="w-full md:w-1/2 bg-emerald-200 h-64 rounded-lg flex items-center justify-center">
-                <span className="text-emerald-800 font-medium">Islamic Center Image</span>
+      {/* Facts */}
+      <section className="border-b border-border bg-secondary/60">
+        <div className="container grid grid-cols-2 md:grid-cols-4 divide-x divide-border">
+          {facts.map((f) => (
+            <div key={f.label} className="py-8 px-4 text-center">
+              <div className="font-serif text-3xl md:text-4xl">{f.value}</div>
+              <div className="text-xs uppercase tracking-[0.14em] text-muted-foreground mt-1">
+                {f.label}
               </div>
             </div>
-          </div>
-        </section>
+          ))}
+        </div>
+      </section>
 
-        {/* Call to Action */}
-        <section className="mb-16 text-center bg-emerald-800 text-white p-10 rounded-xl">
-          <h2 className="text-3xl font-bold mb-4">Join Our Islamic Community</h2>
-          <p className="max-w-2xl mx-auto mb-6">
-            Enroll today to embark on a journey of Islamic knowledge and spiritual growth.
-            Our doors are open to all who seek to learn and grow in their faith.
+      {/* About */}
+      <section className="container py-20">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <p className="eyebrow mb-3">About the school</p>
+            <h2 className="text-3xl md:text-4xl mb-5">
+              A madrasa in Itaolokan, teaching without shortcuts since {FOUNDED_YEAR}
+            </h2>
+            <p className="text-muted-foreground mb-4">
+              {SCHOOL_NAME} teaches Qur'an memorisation, Arabic language and the core Islamic
+              sciences. Every student is placed by level, revised daily, and assessed each month.
+            </p>
+            <p className="text-muted-foreground mb-6">
+              Classes run morning, afternoon, evening and weekends, so working adults and
+              school-age children can both attend.
+            </p>
+            <Button variant="outline" asChild>
+              <Link to="/about">
+                More about us <ArrowRight size={16} className="ml-2" />
+              </Link>
+            </Button>
+          </div>
+          <img
+            src={quranStudy}
+            alt="Open Qur'an on a carved wooden rehal stand beside prayer beads"
+            className="rounded-md w-full h-auto"
+            loading="lazy"
+            width={1200}
+            height={800}
+          />
+        </div>
+      </section>
+
+      {/* Programmes */}
+      <section className="bg-secondary/50 border-y border-border py-20">
+        <div className="container">
+          <div className="flex flex-wrap items-end justify-between gap-4 mb-10">
+            <div>
+              <p className="eyebrow mb-3">Programmes</p>
+              <h2 className="text-3xl md:text-4xl">Six programmes, one clear path</h2>
+            </div>
+            <Button variant="outline" asChild>
+              <Link to="/programs">View full details</Link>
+            </Button>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {programs.slice(0, 6).map((p) => (
+              <Card key={p.id} className="h-full">
+                <CardContent className="pt-6">
+                  <h3 className="font-serif text-xl mb-2">{p.title}</h3>
+                  <p className="text-sm text-muted-foreground mb-4">{p.summary}</p>
+                  <dl className="text-sm space-y-1.5 text-muted-foreground">
+                    <div className="flex justify-between gap-4">
+                      <dt>Level</dt>
+                      <dd className="text-foreground text-right">{p.level}</dd>
+                    </div>
+                    <div className="flex justify-between gap-4">
+                      <dt>Duration</dt>
+                      <dd className="text-foreground text-right">{p.duration}</dd>
+                    </div>
+                    <div className="flex justify-between gap-4">
+                      <dt>Schedule</dt>
+                      <dd className="text-foreground text-right">{p.schedule}</dd>
+                    </div>
+                    <div className="flex justify-between gap-4">
+                      <dt>From</dt>
+                      <dd className="text-foreground text-right">${p.monthlyFee}/month</dd>
+                    </div>
+                  </dl>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Enrollment steps */}
+      <section className="container py-20">
+        <p className="eyebrow mb-3">Admission</p>
+        <h2 className="text-3xl md:text-4xl mb-10">Enrolling takes five steps</h2>
+        <ol className="grid md:grid-cols-5 gap-6">
+          {enrollmentSteps.map((s) => (
+            <li key={s.step} className="border-t-2 border-accent pt-4">
+              <div className="font-serif text-2xl text-primary mb-1">0{s.step}</div>
+              <h3 className="font-medium mb-1.5 text-base">{s.title}</h3>
+              <p className="text-sm text-muted-foreground">{s.detail}</p>
+            </li>
+          ))}
+        </ol>
+        <Button size="lg" className="mt-10" asChild>
+          <Link to="/admission">Apply now — it takes 5 minutes</Link>
+        </Button>
+      </section>
+
+      {/* Recognition */}
+      <section className="bg-secondary/50 border-y border-border py-16">
+        <div className="container">
+          <p className="eyebrow mb-3">Recognition</p>
+          <h2 className="text-3xl mb-8">Registered and affiliated</h2>
+          <ul className="grid md:grid-cols-3 gap-6">
+            {recognitions.map((r) => (
+              <li key={r.title} className="flex gap-3">
+                <Check size={18} className="text-primary mt-1 shrink-0" aria-hidden="true" />
+                <div>
+                  <h3 className="font-medium text-base">{r.title}</h3>
+                  <p className="text-sm text-muted-foreground">{r.detail}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="container py-20">
+        <p className="eyebrow mb-3">Student results</p>
+        <h2 className="text-3xl md:text-4xl mb-10">What families say</h2>
+        <div className="grid md:grid-cols-3 gap-6">
+          {testimonials.map((t) => (
+            <figure key={t.quote} className="bg-card border border-border rounded-md p-6">
+              <blockquote className="font-serif text-lg leading-snug mb-4">“{t.quote}”</blockquote>
+              <figcaption className="text-sm text-muted-foreground">
+                {t.author} · {t.program}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="bg-foreground text-background">
+        <div className="container py-16 text-center">
+          <h2 className="text-3xl md:text-4xl mb-4">Admissions are open all year</h2>
+          <p className="max-w-xl mx-auto mb-8 text-background/80">
+            Send the form today and a teacher will call you within three working days to confirm
+            your child's level and start date.
           </p>
-          <Button size="lg" className="bg-white text-emerald-800 hover:bg-emerald-100" asChild>
-            <Link to="/enrollment">Enroll Now</Link>
+          <Button size="lg" variant="secondary" asChild>
+            <Link to="/admission">Apply now</Link>
           </Button>
-        </section>
-      </div>
+        </div>
+      </section>
     </MainLayout>
   );
 };
