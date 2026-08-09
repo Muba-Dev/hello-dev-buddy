@@ -144,11 +144,11 @@ const FeesPage = () => {
                 <Card 
                   key={plan.id} 
                   className={`${
-                    plan.popular ? 'border-accent relative' : ''
+                    plan.popular ? 'border-emerald-600 relative' : ''
                   }`}
                 >
                   {plan.popular && (
-                    <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-medium">
+                    <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-emerald-600 text-white px-4 py-1 rounded-full text-sm font-medium">
                       Popular Choice
                     </div>
                   )}
@@ -163,14 +163,14 @@ const FeesPage = () => {
                     <ul className="space-y-2">
                       {plan.features.map((feature, index) => (
                         <li key={index} className="flex items-center gap-2">
-                          <Check size={18} className="text-accent" />
+                          <Check size={18} className="text-emerald-600" />
                           <span>{feature}</span>
                         </li>
                       ))}
                     </ul>
                   </CardContent>
                   <CardFooter>
-                    <Button className={`w-full ${plan.popular ? 'bg-primary hover:bg-accent hover:text-accent-foreground' : ''}`}>
+                    <Button className={`w-full ${plan.popular ? 'bg-emerald-600 hover:bg-emerald-700' : ''}`}>
                       Select Plan
                     </Button>
                   </CardFooter>
@@ -179,7 +179,7 @@ const FeesPage = () => {
             </div>
           </section>
 
-          <section className="bg-secondary/50 p-8 rounded-xl">
+          <section className="bg-emerald-50 p-8 rounded-xl">
             <div className="flex flex-col md:flex-row gap-6 items-center">
               <div className="w-full md:w-3/4">
                 <h2 className="text-2xl font-semibold mb-4">Financial Assistance</h2>
@@ -187,13 +187,13 @@ const FeesPage = () => {
                   We believe that financial circumstances should not prevent anyone from seeking Islamic knowledge. 
                   Our center offers financial assistance and scholarships to deserving students.
                 </p>
-                <div className="flex items-center gap-3 text-accent">
+                <div className="flex items-center gap-3 text-emerald-700">
                   <HelpCircle size={20} />
                   <span>Contact our administration office for more information on scholarships and fee waivers.</span>
                 </div>
               </div>
               <div className="w-full md:w-1/4 flex justify-center">
-                <Button size="lg" variant="outline" className="border-primary text-accent hover:bg-primary hover:text-primary-foreground">
+                <Button size="lg" variant="outline" className="border-emerald-700 text-emerald-700 hover:bg-emerald-700 hover:text-white">
                   Apply for Assistance
                 </Button>
               </div>

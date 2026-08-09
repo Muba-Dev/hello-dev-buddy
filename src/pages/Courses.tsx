@@ -78,8 +78,8 @@ const CoursesPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {courses.map((course) => (
             <Card key={course.id} className="overflow-hidden hover:shadow-lg transition-shadow">
-              <div className="h-48 bg-secondary flex items-center justify-center">
-                <BookOpen className="h-16 w-16 text-accent" />
+              <div className="h-48 bg-emerald-100 flex items-center justify-center">
+                <BookOpen className="h-16 w-16 text-emerald-700" />
               </div>
               <CardHeader>
                 <CardTitle>{course.title}</CardTitle>
@@ -97,7 +97,7 @@ const CoursesPage = () => {
                 </div>
               </CardContent>
               <CardFooter>
-                <Button className="w-full bg-primary hover:bg-accent hover:text-accent-foreground">Learn More</Button>
+                <Button className="w-full bg-emerald-700 hover:bg-emerald-800">Learn More</Button>
               </CardFooter>
             </Card>
           ))}
