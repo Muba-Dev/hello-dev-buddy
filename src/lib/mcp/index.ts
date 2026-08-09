@@ -11,7 +11,7 @@ export default defineMcp({
   title: "hello-dev-buddy",
   version: "0.1.0",
   instructions:
-    "Public information tools for Darul-Hudal Wal-Furquran, an Islamic school and learning center. Use `list_courses` for programs, `list_sessions` for class schedules, `get_fees` for fees and payment plans, and `get_enrollment_info` for how to apply.",
+    "Public information tools for Darul-Huda Wal-Furquran, an Islamic school and learning center. Use `list_courses` for programs, `list_sessions` for class schedules, `get_fees` for fees and payment plans, and `get_enrollment_info` for how to apply.",
   auth: auth.oauth.issuer({
     issuer: `https://${projectRef}.supabase.co/auth/v1`,
     acceptedAudiences: "authenticated",

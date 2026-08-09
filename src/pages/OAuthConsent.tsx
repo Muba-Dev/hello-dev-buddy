@@ -81,7 +81,7 @@ export default function OAuthConsent() {
       <div className="w-full max-w-md space-y-4 rounded-lg border border-border p-6 text-center">
         <h1 className="text-2xl font-semibold text-foreground">Connect {clientName}</h1>
         <p className="text-muted-foreground">
-          This lets {clientName} use Darul-Hudal Wal-Furquran tools on your behalf.
+          This lets {clientName} use Darul-Huda Wal-Furquran tools on your behalf.
         </p>
         <div className="flex gap-3 justify-center pt-2">
           <Button disabled={busy} onClick={() => decide(true)}>Approve</Button>

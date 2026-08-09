@@ -1,5 +1,5 @@
 /**
- * Public reference data for Darul-Hudal Wal-Furquran, exposed over MCP.
+ * Public reference data for Darul-Huda Wal-Furquran, exposed over MCP.
  * This mirrors the publicly visible content of the website.
  */
 
@@ -38,7 +38,7 @@ export const paymentPlans = [
 ] as const;
 
 export const enrollmentInfo = {
-  page: "/enrollment",
+  page: "/admission",
   requiredFields: [
     "Full name (min. 3 characters)",
     "Email address",

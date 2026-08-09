@@ -41,7 +41,7 @@ var paymentPlans = [
   { id: 3, name: "Premium", price: 850, period: "annual", features: ["Access to all programs", "All learning materials included", "Flexible schedule", "Monthly assessments", "Weekly one-on-one sessions", "Certificate upon completion"] }
 ];
 var enrollmentInfo = {
-  page: "/enrollment",
+  page: "/admission",
   requiredFields: [
     "Full name (min. 3 characters)",
     "Email address",
@@ -146,7 +146,7 @@ var mcp_default = defineMcp({
   name: "hello-dev-buddy",
   title: "hello-dev-buddy",
   version: "0.1.0",
-  instructions: "Public information tools for Darul-Hudal Wal-Furquran, an Islamic school and learning center. Use `list_courses` for programs, `list_sessions` for class schedules, `get_fees` for fees and payment plans, and `get_enrollment_info` for how to apply.",
+  instructions: "Public information tools for Darul-Huda Wal-Furquran, an Islamic school and learning center. Use `list_courses` for programs, `list_sessions` for class schedules, `get_fees` for fees and payment plans, and `get_enrollment_info` for how to apply.",
   auth: auth.oauth.issuer({
     issuer: `https://${projectRef}.supabase.co/auth/v1`,
     acceptedAudiences: "authenticated"
