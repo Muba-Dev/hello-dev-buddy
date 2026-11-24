@@ -7,7 +7,8 @@ import { Label } from "@/components/ui/label";
 
 function safeNext(raw: string | null): string {
   if (!raw) return "/";
-  if (!raw.startsWith("/") || raw.startsWith("//")) return "/";
+  // Backslashes can be normalised to slashes by browsers, enabling `/\evil.com`.
+  if (!raw.startsWith("/") || raw.startsWith("//") || raw.includes("\\")) return "/";
   return raw;
 }
 

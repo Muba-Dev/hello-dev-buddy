@@ -14,16 +14,146 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      admission_applications: {
+        Row: {
+          id: string
+          created_at: string
+          reference_id: string
+          full_name: string
+          age: number
+          guardian_name: string | null
+          phone: string
+          email: string | null
+          gender: string
+          program_slug: string
+          home_address: string
+          previous_education: string | null
+          emergency_contact: string
+          agreed_to_terms: boolean
+          status: "NEW" | "CONTACTED" | "PLACEMENT_DONE" | "ENROLLED" | "ARCHIVED"
+          assigned_level: string | null
+          teacher_notes: string | null
+          payment_status: "UNPAID" | "PAID"
+          payment_method: "CASH_AT_OFFICE" | "BANK_TRANSFER" | null
+          receipt_note: string | null
+          payment_verified_at: string | null
+          updated_at: string
+          updated_by: string | null
+        }
+        Insert: {
+          id?: string
+          created_at?: string
+          reference_id?: string
+          full_name: string
+          age: number
+          guardian_name?: string | null
+          phone: string
+          email?: string | null
+          gender: string
+          program_slug: string
+          home_address: string
+          previous_education?: string | null
+          emergency_contact: string
+          agreed_to_terms?: boolean
+          status?: "NEW" | "CONTACTED" | "PLACEMENT_DONE" | "ENROLLED" | "ARCHIVED"
+          assigned_level?: string | null
+          teacher_notes?: string | null
+          payment_status?: "UNPAID" | "PAID"
+          payment_method?: "CASH_AT_OFFICE" | "BANK_TRANSFER" | null
+          receipt_note?: string | null
+          payment_verified_at?: string | null
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Update: {
+          id?: string
+          created_at?: string
+          reference_id?: string
+          full_name?: string
+          age?: number
+          guardian_name?: string | null
+          phone?: string
+          email?: string | null
+          gender?: string
+          program_slug?: string
+          home_address?: string
+          previous_education?: string | null
+          emergency_contact?: string
+          agreed_to_terms?: boolean
+          status?: "NEW" | "CONTACTED" | "PLACEMENT_DONE" | "ENROLLED" | "ARCHIVED"
+          assigned_level?: string | null
+          teacher_notes?: string | null
+          payment_status?: "UNPAID" | "PAID"
+          payment_method?: "CASH_AT_OFFICE" | "BANK_TRANSFER" | null
+          receipt_note?: string | null
+          payment_verified_at?: string | null
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Relationships: []
+      }
+      admin_users: {
+        Row: {
+          user_id: string
+          created_at: string
+        }
+        Insert: {
+          user_id: string
+          created_at?: string
+        }
+        Update: {
+          user_id?: string
+          created_at?: string
+        }
+        Relationships: []
+      }
+      admission_audit_log: {
+        Row: {
+          id: number
+          application_id: string
+          changed_by: string | null
+          action: string
+          from_status: "NEW" | "CONTACTED" | "PLACEMENT_DONE" | "ENROLLED" | "ARCHIVED" | null
+          to_status: "NEW" | "CONTACTED" | "PLACEMENT_DONE" | "ENROLLED" | "ARCHIVED" | null
+          details: Json
+          created_at: string
+        }
+        Insert: {
+          id?: number
+          application_id: string
+          changed_by?: string | null
+          action: string
+          from_status?: "NEW" | "CONTACTED" | "PLACEMENT_DONE" | "ENROLLED" | "ARCHIVED" | null
+          to_status?: "NEW" | "CONTACTED" | "PLACEMENT_DONE" | "ENROLLED" | "ARCHIVED" | null
+          details?: Json
+          created_at?: string
+        }
+        Update: {
+          id?: number
+          application_id?: string
+          changed_by?: string | null
+          action?: string
+          from_status?: "NEW" | "CONTACTED" | "PLACEMENT_DONE" | "ENROLLED" | "ARCHIVED" | null
+          to_status?: "NEW" | "CONTACTED" | "PLACEMENT_DONE" | "ENROLLED" | "ARCHIVED" | null
+          details?: Json
+          created_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      is_admin: {
+        Args: Record<PropertyKey, never>
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      admission_status: "NEW" | "CONTACTED" | "PLACEMENT_DONE" | "ENROLLED" | "ARCHIVED"
+      payment_status: "UNPAID" | "PAID"
+      payment_method: "CASH_AT_OFFICE" | "BANK_TRANSFER"
     }
     CompositeTypes: {
       [_ in never]: never

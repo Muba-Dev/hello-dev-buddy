@@ -1,6 +1,4 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import MainLayout from '@/layouts/MainLayout';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { ArrowRight, Check } from 'lucide-react';
@@ -18,7 +16,7 @@ import {
 
 const Index = () => {
   return (
-    <MainLayout>
+    <>
       {/* Hero */}
       <section className="relative">
         <img
@@ -27,6 +25,7 @@ const Index = () => {
           className="absolute inset-0 w-full h-full object-cover"
           width={1408}
           height={912}
+          fetchPriority="high"
         />
         <div className="absolute inset-0 bg-foreground/65" aria-hidden="true" />
         <div className="container relative py-24 md:py-32">
@@ -212,7 +211,7 @@ const Index = () => {
           </Button>
         </div>
       </section>
-    </MainLayout>
+    </>
   );
 };
 

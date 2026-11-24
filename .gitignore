@@ -11,6 +11,15 @@ node_modules
 dist
 dist-ssr
 *.local
+*.tsbuildinfo
+
+# Generated during the Vite build by @lovable.dev/mcp-js (POSIX hosts).
+supabase/functions/mcp/index.ts
+
+# Environment / secrets — commit .env.example instead
+.env
+.env.*
+!.env.example
 
 # Editor directories and files
 .vscode/*

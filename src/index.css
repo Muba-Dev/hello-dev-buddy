@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Work+Sans:wght@300;400;500;600;700&display=swap');
-
+/* Fonts are preconnected and loaded from index.html to avoid a render-blocking CSS import. */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

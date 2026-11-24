@@ -11,7 +11,9 @@ export default defineTool({
     query: z
       .string()
       .optional()
-      .describe("Optional keyword to filter courses by title or description."),
+      .describe(
+        "Optional keyword to filter courses by title, description or alternative name (for example 'hifz').",
+      ),
   },
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: ({ query }) => {
@@ -20,7 +22,8 @@ export default defineTool({
       ? courses.filter(
           (c) =>
             c.title.toLowerCase().includes(q) ||
-            c.description.toLowerCase().includes(q),
+            c.description.toLowerCase().includes(q) ||
+            c.keywords.some((keyword) => keyword.toLowerCase().includes(q)),
         )
       : [...courses];
     return {

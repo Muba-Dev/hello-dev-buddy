@@ -4,23 +4,13 @@ import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 import { SCHOOL_NAME } from "@/data/school";
+import { admissionLink, navigationLinks } from "@/config/navigation";
+import crest from "@/assets/crest.png";
 
 /**
- * Header Component
- *
  * Primary site navigation with the full public site map and a persistent
  * "Apply now" call to action. Highlights the active route.
  */
-const navigationLinks = [
-  { path: "/", label: "Home" },
-  { path: "/about", label: "About" },
-  { path: "/programs", label: "Programs" },
-  { path: "/sessions", label: "Timetable" },
-  { path: "/fees", label: "Fees" },
-  { path: "/gallery", label: "Gallery" },
-  { path: "/faq", label: "FAQ" },
-  { path: "/contact", label: "Contact" },
-];
 
 const Header: React.FC = () => {
   const location = useLocation();
@@ -32,7 +22,7 @@ const Header: React.FC = () => {
         <Link to="/" className="flex items-center gap-3 shrink-0">
           <div className="w-12 h-12 rounded-full overflow-hidden bg-secondary flex items-center justify-center">
             <img
-              src="/lovable-uploads/8d885954-735f-4a6c-b8ad-3f47dd5cccd8.png"
+              src={crest}
               alt={`${SCHOOL_NAME} school crest`}
               className="w-full h-full object-contain"
               width={48}
@@ -67,9 +57,11 @@ const Header: React.FC = () => {
         </nav>
 
         <div className="flex items-center gap-2">
-          <Button asChild className="hidden sm:inline-flex">
-            <Link to="/admission">Apply now</Link>
-          </Button>
+          {location.pathname !== "/admission" && (
+            <Button asChild className="hidden sm:inline-flex">
+              <Link to="/admission">Apply now</Link>
+            </Button>
+          )}
 
           {/* Mobile navigation */}
           <div className="lg:hidden">
@@ -82,7 +74,7 @@ const Header: React.FC = () => {
               <SheetContent side="right" className="p-0">
                 <nav aria-label="Mobile navigation" className="p-6 pt-12">
                   <ul className="grid gap-1">
-                    {[...navigationLinks, { path: "/admission", label: "Admission" }].map((link) => (
+                    {[...navigationLinks, admissionLink].map((link) => (
                       <li key={link.path}>
                         <SheetClose asChild>
                           <Link

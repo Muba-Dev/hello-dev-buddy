@@ -1,57 +1,61 @@
+import { Suspense, lazy } from "react";
 import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
-import AboutPage from "./pages/About";
-import ProgramsPage from "./pages/Programs";
-import SessionsPage from "./pages/Sessions";
-import FeesPage from "./pages/Fees";
-import AdmissionPage from "./pages/Admission";
-import ContactPage from "./pages/Contact";
-import FaqPage from "./pages/Faq";
-import GalleryPage from "./pages/Gallery";
-import Login from "./pages/Login";
-import OAuthConsent from "./pages/OAuthConsent";
+import PageFallback from "@/components/PageFallback";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import MainLayout from "@/layouts/MainLayout";
 
-/**
- * Main application component
- *
- * Sets up React Query, UI providers and the public site routes.
- * Legacy /courses and /enrollment paths redirect to their new homes.
- */
-const queryClient = new QueryClient();
+const Index = lazy(() => import("./pages/Index"));
+const AboutPage = lazy(() => import("./pages/About"));
+const ProgramsPage = lazy(() => import("./pages/Programs"));
+const SessionsPage = lazy(() => import("./pages/Sessions"));
+const FeesPage = lazy(() => import("./pages/Fees"));
+const AdmissionPage = lazy(() => import("./pages/Admission"));
+const GalleryPage = lazy(() => import("./pages/Gallery"));
+const FaqPage = lazy(() => import("./pages/Faq"));
+const ContactPage = lazy(() => import("./pages/Contact"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const Login = lazy(() => import("./pages/Login"));
+const OAuthConsent = lazy(() => import("./pages/OAuthConsent"));
+const AdminRoute = lazy(() => import("./components/AdminRoute"));
+const AdminAdmissions = lazy(() => import("./pages/admin/Admissions"));
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
+  <TooltipProvider>
+    <Toaster />
+    <BrowserRouter>
+      <Suspense fallback={<PageFallback />}>
         <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/programs" element={<ProgramsPage />} />
-          <Route path="/sessions" element={<SessionsPage />} />
-          <Route path="/fees" element={<FeesPage />} />
-          <Route path="/admission" element={<AdmissionPage />} />
-          <Route path="/gallery" element={<GalleryPage />} />
-          <Route path="/faq" element={<FaqPage />} />
-          <Route path="/contact" element={<ContactPage />} />
+          {/* Public site — MainLayout owns the banner, header, footer and suspense boundary. */}
+          <Route element={<MainLayout />}>
+            <Route path="/" element={<Index />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/programs" element={<ProgramsPage />} />
+            <Route path="/sessions" element={<SessionsPage />} />
+            <Route path="/fees" element={<FeesPage />} />
+            <Route path="/gallery" element={<GalleryPage />} />
+            <Route path="/faq" element={<FaqPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/admission" element={<AdmissionPage />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
 
           {/* Legacy routes */}
           <Route path="/courses" element={<Navigate to="/programs" replace />} />
           <Route path="/enrollment" element={<Navigate to="/admission" replace />} />
 
+          {/* Auth surfaces intentionally render without the public site shell. */}
           <Route path="/login" element={<Login />} />
           <Route path="/.lovable/oauth/consent" element={<OAuthConsent />} />
-          <Route path="*" element={<NotFound />} />
+
+          {/* Staff area — guarded by session + admin allowlist. */}
+          <Route element={<AdminRoute />}>
+            <Route path="/admin/admissions" element={<AdminAdmissions />} />
+          </Route>
         </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
+      </Suspense>
+    </BrowserRouter>
+  </TooltipProvider>
 );
 
 export default App;
