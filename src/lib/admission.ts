@@ -49,7 +49,7 @@ const baseSchema = z.object({
     .union([z.string().trim().email("Enter a valid email address."), z.literal("")])
     .optional(),
   gender: z.enum(["female", "male"], {
-    errorMap: () => ({ message: "Select a gender." }),
+    error: "Select a gender.",
   }),
   /** Canonical programme slug from src/data/school.ts (the active programme list). */
   program: z
@@ -61,7 +61,7 @@ const baseSchema = z.object({
   background: z.string().trim().max(500, "Keep this under 500 characters.").optional(),
   emergencyContact: nigerianPhone,
   agreedToTerms: z.literal(true, {
-    errorMap: () => ({ message: "You must accept the attendance and fee terms." }),
+    error: "You must accept the attendance and fee terms.",
   }),
   /** Hidden honeypot. Empty for real users; the API silently drops filled submissions. */
   honeypot: z.string().optional(),

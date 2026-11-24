@@ -9,13 +9,16 @@ clients.
 
 ## Stack
 
-- React 18, React Router 6, TypeScript
+- React 18, React Router 7, TypeScript
+- Zod 4 for validation shared by the form, MCP tool and edge function
 - Tailwind CSS + shadcn/ui (Radix primitives)
 - Supabase Auth and Postgres
 - `@lovable.dev/mcp-js` for the MCP definition and the Supabase edge function
-- Vite 5
+- Vite 8
 
 ## Getting started
+
+Requires Node.js 22 or newer.
 
 ```sh
 npm install

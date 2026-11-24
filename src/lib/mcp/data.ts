@@ -52,7 +52,7 @@ export const enrollmentInfo = {
   referenceFormat: "DHF-YYYY-NNNN",
   requiredFields: requiredAdmissionFields,
   optionalFields: optionalAdmissionFields,
-  conditionalRules: conditionalAdmissionRules,
+  conditionalRules: [...conditionalAdmissionRules],
   notes:
     "Applications are submitted through the form at /admission and stored by the school. A registration fee applies per programme. Applicants receive an on-screen reference ID and a call within three working days.",
-} as const;
+};
